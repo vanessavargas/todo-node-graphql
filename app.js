@@ -1,27 +1,16 @@
 const express = require('express');
 const app = express();
+const schema = require('./src/schemas/schema');
 const port = 3000;
-const schema = require('./schema');
 
 app.use(express.json());
 
-app.get("/graphql", (req, res) => {
-  res.json({
-    schema: schema,
-  });
-});
+connectDB();
 
-app.post("/graphql", (req, res) => {
-  const body = req.body;
-
-  const result = graphql(schema, body.query, {
-    context: async () => ({
-      db: await connectDB(),
-    }),
-  });
-
-  res.json(result);
-});
+app.use('/graphql', graphqlHTTP({
+   schema,
+   graphiql: true
+ })); 
  
 app.listen(port, () => {
    console.log(`Escutando em http://localhost:${port}`);
