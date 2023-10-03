@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const config = require('../utils/config');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/seu-banco-de-dados', {
+    await mongoose.connect(config.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
@@ -14,3 +15,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+

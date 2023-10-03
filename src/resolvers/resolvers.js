@@ -1,4 +1,6 @@
 const Todo = require('../models/todoModel'); 
+const { handleError } = require('../utils/errorHandler');
+const { ERROR_MESSAGES } = require('../utils/constants');
 
 const resolvers = {
   Query: {
@@ -6,7 +8,7 @@ const resolvers = {
       try {
         return await Todo.find();
       } catch (error) {
-        throw new Error('Erro ao obter todos: ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_NOT_FOUND + ' ' + error.message);
       }
     }
   },
@@ -16,14 +18,14 @@ const resolvers = {
         const todo = new Todo({ title });
         return await todo.save();
       } catch (error) {
-        throw new Error('Erro ao criar um novo todo: ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + ' ' + error.message);
       }
     },
     updateTodo: async (_, { id, title }) => {
       try {
         return await Todo.findByIdAndUpdate(id, { title }, { new: true });
       } catch (error) {
-        throw new Error('Erro ao atualizar o todo: ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + ' ' + error.message);
       }
     },
     deleteTodo: async (_, { id }) => {
@@ -31,7 +33,7 @@ const resolvers = {
         await Todo.findByIdAndDelete(id);
         return true;
       } catch (error) {
-        throw new Error('Erro ao excluir o todo: ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_DELETION_ERROR + ' ' + error.message);
       }
     }
   }
