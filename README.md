@@ -45,7 +45,8 @@ project-root/
   │   ├── schemas/        (esquemas GraphQL)
   │   │   ├── profileSchema.js
   │   │   ├── todoSchema.js
-  │   │   └── userSchema.js
+  │   │   ├── userSchema.js
+  │   │   └── schema.js
   │   ├── utils/          (utilitários)
   │   │   ├── constants.js  (constant messages)
   │   │   ├── config.js   (configurações)

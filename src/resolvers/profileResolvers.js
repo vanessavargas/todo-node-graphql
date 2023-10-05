@@ -4,7 +4,7 @@ const { ERROR_MESSAGES } = require('../utils/constants');
 
 const profileResolver = {
   Query: {
-    profiles: async () => {
+    profiles: async () => { 
       try {
         return await Profile.find();
       } catch (error) {
@@ -21,16 +21,16 @@ const profileResolver = {
         handleError(ERROR_MESSAGES.PROFILE_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateProfile: async (_, { id, description }) => {
+    updateProfile: async (_, { _id, description }) => {
       try {
-        return await Profile.findByIdAndUpdate(id, { description }, { new: true });
+        return await Profile.findByIdAndUpdate(_id, { description }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILE_UPDATE_ERROR + ' ' + error.message);
       }
     },
-    deleteProfile: async (_, { id }) => {
+    deleteProfile: async (_, { _id }) => {
       try {
-        await Profile.findByIdAndDelete(id);
+        await Profile.findByIdAndDelete(_id);
         return true;
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILE_DELETION_ERROR + ' ' + error.message);

@@ -21,16 +21,16 @@ const todoResolver = {
         handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateTodo: async (_, { id, description }) => {
+    updateTodo: async (_, { _id, description }) => {
       try {
-        return await Todo.findByIdAndUpdate(id, { description }, { new: true });
+        return await Todo.findByIdAndUpdate(_id, { description }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + ' ' + error.message);
       }
     },
-    deleteTodo: async (_, { id }) => {
+    deleteTodo: async (_, { _id }) => {
       try {
-        await Todo.findByIdAndDelete(id);
+        await Todo.findByIdAndDelete(_id);
         return true;
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_DELETION_ERROR + ' ' + error.message);

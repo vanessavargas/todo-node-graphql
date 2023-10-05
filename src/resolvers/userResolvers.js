@@ -2,7 +2,7 @@ const User = require('../models/user');
 const { handleError } = require('../utils/errorHandler');
 const { ERROR_MESSAGES } = require('../utils/constants');
 
-const UserResolver = {
+const userResolver = {
   Query: {
     users: async () => {
       try {
@@ -13,24 +13,24 @@ const UserResolver = {
     }
   },
   Mutation: {
-    createUser: async (_, { description }) => {
+    createUser: async (_, { userName, password }) => {
       try {
-        const user = new User({ description });
+        const user = new User({ userName, password });
         return await user.save();
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateUser: async (_, { id, description }) => {
+    updateUser: async (_, { _id, userName, password }) => {
       try {
-        return await User.findByIdAndUpdate(id, { description }, { new: true });
+        return await User.findByIdAndUpdate(_id, { userName, password }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_UPDATE_ERROR + ' ' + error.message);
       }
     },
-    deleteUser: async (_, { id }) => {
+    deleteUser: async (_, { _id }) => {
       try {
-        await User.findByIdAndDelete(id);
+        await User.findByIdAndDelete(_id);
         return true;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_DELETION_ERROR + ' ' + error.message);
@@ -39,4 +39,4 @@ const UserResolver = {
   }
 };
 
-module.exports = UserResolver;
+module.exports = userResolver;

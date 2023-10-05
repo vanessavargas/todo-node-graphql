@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const todoSchema = new mongoose.Schema({
+const todoSchemaDb = new mongoose.Schema({
   _id: { type: String, default: uuidv4 },
   description: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
@@ -12,4 +12,4 @@ const todoSchema = new mongoose.Schema({
   imageUrl: { type: String }
 });
 
-module.exports = mongoose.model('Todo', todoSchema);
+module.exports = mongoose.model('Todo', todoSchemaDb);

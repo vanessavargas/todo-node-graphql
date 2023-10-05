@@ -26,7 +26,8 @@ const Mutation = new GraphQLObjectType({
     createUser: {
       type: UserType,
       args: {
-        description: { type: GraphQLString }
+        userName: { type: GraphQLString },
+        password: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.createUser
     },
@@ -34,7 +35,8 @@ const Mutation = new GraphQLObjectType({
       type: UserType,
       args: {
         _id: { type: GraphQLID },
-        description: { type: GraphQLString }
+        userName: { type: GraphQLString },
+        password: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.updateUser
     },
@@ -48,9 +50,9 @@ const Mutation = new GraphQLObjectType({
   }
 });
 
-const schema = new GraphQLSchema({
+const userSchema = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation
 });
 
-module.exports = schema;
+module.exports = userSchema;

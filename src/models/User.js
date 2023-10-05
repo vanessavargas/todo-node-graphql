@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const userSchema = new mongoose.Schema({
+const userSchemaDb = new mongoose.Schema({
     _id: { type: String, default: uuidv4 },
     userName: { type: String, required: true },
     password: { type: String, required: true },
@@ -13,4 +13,4 @@ const userSchema = new mongoose.Schema({
     imageUrl: { type: String },
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchemaDb);

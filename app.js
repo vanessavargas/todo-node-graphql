@@ -1,6 +1,6 @@
 const express = require('express');
+const todoSchema = require('./src/schemas/todoSchema');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./src/schemas/todoSchema');
 const connectDB = require('./src/utils/db');
 const { handleError } = require('./src/utils/errorHandler');
 const { ERROR_MESSAGES } = require('./src/utils/constants');
@@ -13,9 +13,9 @@ app.use(express.json());
 connectDB();
 
 app.use('/graphql', graphqlHTTP({
-   graphiql: true,
-   schema: schema
- })); 
+  graphiql: true,
+  schema: todoSchema
+}));
 
  app.use((err, req, res, next) => {
    handleError(ERROR_MESSAGES.GENERIC_ERROR); 
