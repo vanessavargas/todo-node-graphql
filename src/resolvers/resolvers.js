@@ -1,4 +1,4 @@
-const Todo = require('../models/Todo'); 
+const Todo = require('../models/todo'); 
 const { handleError } = require('../utils/errorHandler');
 const { ERROR_MESSAGES } = require('../utils/constants');
 
