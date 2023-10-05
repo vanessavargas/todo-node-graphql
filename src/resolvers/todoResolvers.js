@@ -2,7 +2,7 @@ const Todo = require('../models/todo');
 const { handleError } = require('../utils/errorHandler');
 const { ERROR_MESSAGES } = require('../utils/constants');
 
-const resolvers = {
+const todoResolver = {
   Query: {
     todos: async () => {
       try {
@@ -39,4 +39,4 @@ const resolvers = {
   }
 };
 
-module.exports = resolvers;
+module.exports = todoResolver;

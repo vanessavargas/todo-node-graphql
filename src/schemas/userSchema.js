@@ -1,20 +1,21 @@
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
-const resolvers = require('../resolvers/resolvers');
+const resolvers = require('../resolvers/userResolvers');
 
-const TodoType = new GraphQLObjectType({
-  name: 'Todo',
+const UserType = new GraphQLObjectType({
+  name: 'User',
   fields: () => ({
     _id: { type: GraphQLID },
-    description: { type: GraphQLString }
+    userName: { type: GraphQLString },
+    password: { type: GraphQLString }
   })
 });
 
 const RootQuery = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    todos: {
-      type: new GraphQLList(TodoType),
-      resolve: resolvers.Query.todos
+    users: {
+      type: new GraphQLList(UserType),
+      resolve: resolvers.Query.users
     }
   }
 });
@@ -22,27 +23,27 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    createTodo: {
-      type: TodoType,
+    createUser: {
+      type: UserType,
       args: {
         description: { type: GraphQLString }
       },
-      resolve: resolvers.Mutation.createTodo
+      resolve: resolvers.Mutation.createUser
     },
-    updateTodo: {
-      type: TodoType,
+    updateUser: {
+      type: UserType,
       args: {
         _id: { type: GraphQLID },
         description: { type: GraphQLString }
       },
-      resolve: resolvers.Mutation.updateTodo
+      resolve: resolvers.Mutation.updateUser
     },
-    deleteTodo: {
+    deleteUser: {
       type: GraphQLBoolean,
       args: {
         _id: { type: GraphQLID }
       },
-      resolve: resolvers.Mutation.deleteTodo
+      resolve: resolvers.Mutation.deleteUser
     }
   }
 });

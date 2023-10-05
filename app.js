@@ -1,6 +1,6 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./src/schemas/schema');
+const schema = require('./src/schemas/todoSchema');
 const connectDB = require('./src/utils/db');
 const { handleError } = require('./src/utils/errorHandler');
 const { ERROR_MESSAGES } = require('./src/utils/constants');

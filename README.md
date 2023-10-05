@@ -26,6 +26,7 @@ Requisitos solicitados na API:
 
 ## Inicializar o projeto
 
+- inicializar serviço do MongoDB
 - npm start (inicializando com o nodemon)
 
 ```
@@ -37,10 +38,14 @@ project-root/
   │   │   ├── profile.js
   │   │   ├── todo.js
   │   │   └── user.js
-  │   ├── resolvers/      (arquivos com funções de resolução GraphQL)
-  │   │   └── resolvers.js
+  │   ├── resolvers/      (funções de resolução GraphQL)
+  │   │   ├── profileResolvers.js
+  │   │   ├── todoResolvers.js
+  │   │   └── userResolvers.js
   │   ├── schemas/        (esquemas GraphQL)
-  │   │   └── schema.js
+  │   │   ├── profileSchema.js
+  │   │   ├── todoSchema.js
+  │   │   └── userSchema.js
   │   ├── utils/          (utilitários)
   │   │   ├── constants.js  (constant messages)
   │   │   ├── config.js   (configurações)
