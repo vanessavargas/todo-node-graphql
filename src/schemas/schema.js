@@ -4,9 +4,8 @@ const resolvers = require('../resolvers/resolvers');
 const TodoType = new GraphQLObjectType({
   name: 'Todo',
   fields: () => ({
-    id: { type: GraphQLID },
-    title: { type: GraphQLString },
-    completed: { type: GraphQLBoolean }
+    _id: { type: GraphQLID },
+    description: { type: GraphQLString }
   })
 });
 
@@ -26,22 +25,22 @@ const Mutation = new GraphQLObjectType({
     createTodo: {
       type: TodoType,
       args: {
-        title: { type: GraphQLString }
+        description: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.createTodo
     },
     updateTodo: {
       type: TodoType,
       args: {
-        id: { type: GraphQLID },
-        title: { type: GraphQLString }
+        _id: { type: GraphQLID },
+        description: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.updateTodo
     },
     deleteTodo: {
       type: GraphQLBoolean,
       args: {
-        id: { type: GraphQLID }
+        _id: { type: GraphQLID }
       },
       resolve: resolvers.Mutation.deleteTodo
     }

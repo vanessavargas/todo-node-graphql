@@ -13,12 +13,12 @@ app.use(express.json());
 connectDB();
 
 app.use('/graphql', graphqlHTTP({
-   schema,
-   graphiql: true
+   graphiql: true,
+   schema: schema
  })); 
 
  app.use((err, req, res, next) => {
-   handleError(ERROR_MESSAGES.GENERIC_ERROR); // handle generic errors
+   handleError(ERROR_MESSAGES.GENERIC_ERROR); 
  });
  
 app.listen(port, () => {

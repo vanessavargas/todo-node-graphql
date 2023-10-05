@@ -1,4 +1,4 @@
-const Todo = require('../models/todoModel'); 
+const Todo = require('../models/Todo'); 
 const { handleError } = require('../utils/errorHandler');
 const { ERROR_MESSAGES } = require('../utils/constants');
 
@@ -13,17 +13,17 @@ const resolvers = {
     }
   },
   Mutation: {
-    createTodo: async (_, { title }) => {
+    createTodo: async (_, { description }) => {
       try {
-        const todo = new Todo({ title });
+        const todo = new Todo({ description });
         return await todo.save();
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateTodo: async (_, { id, title }) => {
+    updateTodo: async (_, { id, description }) => {
       try {
-        return await Todo.findByIdAndUpdate(id, { title }, { new: true });
+        return await Todo.findByIdAndUpdate(id, { description }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + ' ' + error.message);
       }

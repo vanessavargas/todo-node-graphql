@@ -1,6 +1,13 @@
 # To-Do List
 
 Requisitos solicitados na API:
+**Tabelas**
+**Todo**: TodoId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), State (Open/Closed), ImageUrl
+
+**User**: UserId (Guid), UserName, Password, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), LastLogin, ImageUrl, ProfileId (Guid)
+
+**Profile**: ProfileId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid)
+
 1 - Aplicar o Clean Code (Obrigatório)
 2 - Usar os princípios de SOLID (Obrigatório)
 3 - Permitir o cadastro de um TodoItem (CRUD)
@@ -15,6 +22,9 @@ Requisitos solicitados na API:
 - Express
 - GraphQL
 - Mongoose
+
+## Inicializar o projeto
+- npm start (inicializando com o nodemon)
 
 ```
 

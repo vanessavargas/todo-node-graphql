@@ -1,5 +1,5 @@
 const config = {
-    dbURI: 'mongodb://localhost:27017/seu-banco-de-dados',
+  uri: 'mongodb://localhost:27017/mongodbgraphql',
   };
   
 module.exports = config;
