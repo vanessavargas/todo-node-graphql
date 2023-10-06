@@ -6,7 +6,7 @@ const TodoType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     description: { type: GraphQLString },
-    createdOn: { type: GraphQLDate},
+    //createdOn: { type: GraphQLDate},
     state: { type: GraphQLString}
   })
 });
@@ -28,7 +28,7 @@ const Mutation = new GraphQLObjectType({
       type: TodoType,
       args: {
         description: { type: GraphQLString },
-        createdOn: { type: GraphQLDate},
+        //createdOn: { type: GraphQLDate},
         state: { type: GraphQLString}
       },
       resolve: todoResolver.Mutation.createTodo
@@ -38,7 +38,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         _id: { type: GraphQLID },
         description: { type: GraphQLString },
-        createdOn: { type: GraphQLDate},
+        //createdOn: { type: GraphQLDate},
         state: { type: GraphQLString}
       },
       resolve: todoResolver.Mutation.updateTodo

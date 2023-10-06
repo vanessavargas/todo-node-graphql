@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const todoSchema = require('./src/schemas/todoSchema');
 const { graphqlHTTP } = require('express-graphql');
 const connectDB = require('./src/utils/db');
@@ -10,19 +11,11 @@ const app = express();
 const port = 8000;
 
 app.use(express.json());
+app.use(cors());
 
 connectDB();
 
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
 
 app.use('/graphql', graphqlHTTP({
   graphiql: true,
