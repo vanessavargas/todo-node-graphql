@@ -13,17 +13,17 @@ const userResolver = {
     }
   },
   Mutation: {
-    createUser: async (_, { userName, password }) => {
+    createUser: async (_, { userName, email, password }) => {
       try {
-        const user = new User({ userName, password });
+        const user = new User({ userName, email, password });
         return await user.save();
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateUser: async (_, { _id, userName, password }) => {
+    updateUser: async (_, { _id, userName, email, password }) => {
       try {
-        return await User.findByIdAndUpdate(_id, { userName, password }, { new: true });
+        return await User.findByIdAndUpdate(_id, { userName, email, password }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_UPDATE_ERROR + ' ' + error.message);
       }

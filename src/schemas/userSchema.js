@@ -6,6 +6,7 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     userName: { type: GraphQLString },
+    email: { type: GraphQLString },
     password: { type: GraphQLString }
   })
 });
@@ -27,6 +28,7 @@ const Mutation = new GraphQLObjectType({
       type: UserType,
       args: {
         userName: { type: GraphQLString },
+        email: { type: GraphQLString },
         password: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.createUser
@@ -36,6 +38,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         _id: { type: GraphQLID },
         userName: { type: GraphQLString },
+        email: { type: GraphQLString },
         password: { type: GraphQLString }
       },
       resolve: resolvers.Mutation.updateUser

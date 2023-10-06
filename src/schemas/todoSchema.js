@@ -1,11 +1,13 @@
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLDate, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
 const todoResolver = require('../resolvers/todoResolvers');
 
 const TodoType = new GraphQLObjectType({
   name: 'Todo',
   fields: () => ({
     _id: { type: GraphQLID },
-    description: { type: GraphQLString }
+    description: { type: GraphQLString },
+    createdOn: { type: GraphQLDate},
+    state: { type: GraphQLString}
   })
 });
 
@@ -25,7 +27,9 @@ const Mutation = new GraphQLObjectType({
     createTodo: {
       type: TodoType,
       args: {
-        description: { type: GraphQLString }
+        description: { type: GraphQLString },
+        createdOn: { type: GraphQLDate},
+        state: { type: GraphQLString}
       },
       resolve: todoResolver.Mutation.createTodo
     },
@@ -33,7 +37,9 @@ const Mutation = new GraphQLObjectType({
       type: TodoType,
       args: {
         _id: { type: GraphQLID },
-        description: { type: GraphQLString }
+        description: { type: GraphQLString },
+        createdOn: { type: GraphQLDate},
+        state: { type: GraphQLString}
       },
       resolve: todoResolver.Mutation.updateTodo
     },

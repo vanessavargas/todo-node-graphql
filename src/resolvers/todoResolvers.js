@@ -13,17 +13,17 @@ const todoResolver = {
     }
   },
   Mutation: {
-    createTodo: async (_, { description }) => {
+    createTodo: async (_, { description, createdOn, state }) => {
       try {
-        const todo = new Todo({ description });
+        const todo = new Todo({ description, createdOn, state });
         return await todo.save();
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + ' ' + error.message);
       }
     },
-    updateTodo: async (_, { _id, description }) => {
+    updateTodo: async (_, { _id, description, createdOn, state }) => {
       try {
-        return await Todo.findByIdAndUpdate(_id, { description }, { new: true });
+        return await Todo.findByIdAndUpdate(_id, { description, createdOn, state }, { new: true });
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + ' ' + error.message);
       }
