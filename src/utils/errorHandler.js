@@ -1,6 +1,5 @@
 const handleError = (message) => {
-    throw new Error(message);
-  };
-  
-  module.exports = { handleError };
-  
+  throw new Error(message);
+};
+
+module.exports = { handleError };

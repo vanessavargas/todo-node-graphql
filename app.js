@@ -1,15 +1,14 @@
-require('dotenv').config()
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const connectDB = require('./src/utils/db');
-const bcript = require('bcrypt');
-const jwt = require('jsonwebtoken');
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const connectDB = require("./src/utils/db");
+const bcript = require("bcrypt");
 
-const schema = require('./src/graphql/schema');
-const { graphqlHTTP } = require('express-graphql');
-const { handleError } = require('./src/utils/errorHandler');
-const { ERROR_MESSAGES } = require('./src/utils/constants');
+const schema = require("./src/graphql/schema");
+const { graphqlHTTP } = require("express-graphql");
+const { handleError } = require("./src/utils/errorHandler");
+const { ERROR_MESSAGES } = require("./src/utils/constants");
 
 const app = express();
 const port = 8000;
@@ -21,9 +20,9 @@ connectDB();
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.status(200).json({msg: 'Testando'})
- /*  const {userName, email, password, confirmPassword} = req.body
+app.get("/", (req, res) => {
+  res.status(200).json({ msg: "Testando" });
+  /*  const {userName, email, password, confirmPassword} = req.body
   if(!userName) {
     return res.status(422).json({msg: 'Usuário é obrigatório'});
   }
@@ -36,17 +35,20 @@ app.get('/', (req, res) => {
   if(!confirmPassword) {
     return res.status(422).json({msg: 'Confirmar senha é obrigatório'});
   } */
-})
+});
 
-app.use('/graphql', graphqlHTTP({
-  graphiql: true,
-  schema: schema
-}));
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    graphiql: true,
+    schema: schema,
+  })
+);
 
- app.use((err, req, res, next) => {
-   handleError(ERROR_MESSAGES.GENERIC_ERROR); 
- });
- 
+app.use((err, req, res, next) => {
+  handleError(ERROR_MESSAGES.GENERIC_ERROR);
+});
+
 app.listen(port, () => {
-   console.log(`Escutando em http://localhost:${port}`);
+  console.log(`Escutando em http://localhost:${port}`);
 });

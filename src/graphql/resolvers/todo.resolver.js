@@ -1,6 +1,6 @@
-const Todo = require('../../models/todo'); 
-const { handleError } = require('../../utils/errorHandler');
-const { ERROR_MESSAGES } = require('../../utils/constants');
+const Todo = require("../../models/todo");
+const { handleError } = require("../../utils/errorHandler");
+const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const todoResolver = {
   Query: {
@@ -8,16 +8,16 @@ const todoResolver = {
       try {
         return await Todo.find();
       } catch (error) {
-        handleError(ERROR_MESSAGES.TODOS_NOT_FOUND + ' ' + error.message);
+        handleError(ERROR_MESSAGES.TODOS_NOT_FOUND + " " + error.message);
       }
     },
     todo: async (_, { _id }) => {
       try {
         return await Todo.findById(_id);
       } catch (error) {
-        handleError(ERROR_MESSAGES.TODO_NOT_FOUND + ' ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_NOT_FOUND + " " + error.message);
       }
-    }
+    },
   },
   Mutation: {
     createTodo: async (_, { description, state }) => {
@@ -25,14 +25,18 @@ const todoResolver = {
         const todo = new Todo({ description, state });
         return await todo.save();
       } catch (error) {
-        handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + ' ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + " " + error.message);
       }
     },
     updateTodo: async (_, { _id, description, state }) => {
       try {
-        return await Todo.findByIdAndUpdate(_id, { description, state }, { new: true });
+        return await Todo.findByIdAndUpdate(
+          _id,
+          { description, state },
+          { new: true }
+        );
       } catch (error) {
-        handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + ' ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + " " + error.message);
       }
     },
     deleteTodo: async (_, { _id }) => {
@@ -40,10 +44,10 @@ const todoResolver = {
         await Todo.findByIdAndDelete(_id);
         return true;
       } catch (error) {
-        handleError(ERROR_MESSAGES.TODO_DELETION_ERROR + ' ' + error.message);
+        handleError(ERROR_MESSAGES.TODO_DELETION_ERROR + " " + error.message);
       }
-    }
-  }
+    },
+  },
 };
 
 module.exports = todoResolver;
