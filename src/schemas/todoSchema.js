@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLDate, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
-const todoResolver = require('../resolvers/todoResolvers');
+const todoResolver = require('../resolvers/todo.resolver');
 
 const TodoType = new GraphQLObjectType({
   name: 'Todo',

@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
-const profileResolver = require('../resolvers/profileResolvers');
+const profileResolver = require('../resolvers/profile.resolver');
 
 const ProfileType = new GraphQLObjectType({
   name: 'Profile',

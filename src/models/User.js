@@ -9,7 +9,7 @@ const userSchemaDb = new mongoose.Schema({
     createdOn: { type: Date, default: Date.now },
     createdBy: { type: String }, 
     modifiedOn: { type: Date },
-    modifiedBy: { type: String }, 
+    modifiedBy: { type: String },
     lastLogin: { type: Date },
     imageUrl: { type: String },
 });

@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLSchema, GraphQLList, GraphQLBoolean } = require('graphql');
-const resolvers = require('../resolvers/userResolvers');
+const resolvers = require('../resolvers/user.resolver');
 
 const UserType = new GraphQLObjectType({
   name: 'User',

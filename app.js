@@ -1,9 +1,13 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const connectDB = require('./src/utils/db');
+const bcript = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 const todoSchema = require('./src/schemas/todoSchema');
 const { graphqlHTTP } = require('express-graphql');
-const connectDB = require('./src/utils/db');
 const { handleError } = require('./src/utils/errorHandler');
 const { ERROR_MESSAGES } = require('./src/utils/constants');
 
@@ -16,6 +20,23 @@ app.use(cors());
 connectDB();
 
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.status(200).json({msg: 'Bem vindo'})
+ /*  const {userName, email, password, confirmPassword} = req.body
+  if(!userName) {
+    return res.status(422).json({msg: 'Usuário é obrigatório'});
+  }
+  if(!email) {
+    return res.status(422).json({msg: 'E-mail é obrigatório'});
+  }
+  if(!password) {
+    return res.status(422).json({msg: 'Senha é obrigatório'});
+  }
+  if(!confirmPassword) {
+    return res.status(422).json({msg: 'Confirmar senha é obrigatório'});
+  } */
+})
 
 app.use('/graphql', graphqlHTTP({
   graphiql: true,

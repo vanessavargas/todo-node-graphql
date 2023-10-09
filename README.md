@@ -15,7 +15,7 @@ Requisitos solicitados na API:
 - Permitir o cadastro de um TodoItem (CRUD)
 - Permitir o cadastro de um Usuário (CRUD)
 - Permitir o Login para acessar o sistema
-- Emitir um Token JWT após o login coms os tipos de Perfil do usuário
+- Emitir um Token JWT após o login com os tipos de Perfil do usuário
 - Implementar Log de erros para capturar falhas da aplicação
 - Banco de dados - MongoDb
 
@@ -25,6 +25,7 @@ Requisitos solicitados na API:
 - Express
 - GraphQL
 - Mongoose
+- Bcript e JWT para autenticação
 
 ## Inicializar o projeto
 
