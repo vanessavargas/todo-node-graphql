@@ -6,7 +6,7 @@ const connectDB = require('./src/utils/db');
 const bcript = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const todoSchema = require('./src/schemas/todoSchema');
+const schema = require('./src/graphql/schema');
 const { graphqlHTTP } = require('express-graphql');
 const { handleError } = require('./src/utils/errorHandler');
 const { ERROR_MESSAGES } = require('./src/utils/constants');
@@ -22,7 +22,7 @@ connectDB();
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.status(200).json({msg: 'Bem vindo'})
+  res.status(200).json({msg: 'Testando'})
  /*  const {userName, email, password, confirmPassword} = req.body
   if(!userName) {
     return res.status(422).json({msg: 'Usuário é obrigatório'});
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 
 app.use('/graphql', graphqlHTTP({
   graphiql: true,
-  schema: todoSchema
+  schema: schema
 }));
 
  app.use((err, req, res, next) => {

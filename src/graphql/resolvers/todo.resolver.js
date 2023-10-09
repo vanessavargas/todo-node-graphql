@@ -1,12 +1,19 @@
-const Todo = require('../models/todo'); 
-const { handleError } = require('../utils/errorHandler');
-const { ERROR_MESSAGES } = require('../utils/constants');
+const Todo = require('../../models/todo'); 
+const { handleError } = require('../../utils/errorHandler');
+const { ERROR_MESSAGES } = require('../../utils/constants');
 
 const todoResolver = {
   Query: {
     todos: async () => {
       try {
         return await Todo.find();
+      } catch (error) {
+        handleError(ERROR_MESSAGES.TODOS_NOT_FOUND + ' ' + error.message);
+      }
+    },
+    todo: async (_, { _id }) => {
+      try {
+        return await Todo.findById(_id);
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_NOT_FOUND + ' ' + error.message);
       }

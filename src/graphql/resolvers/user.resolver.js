@@ -1,6 +1,6 @@
-const User = require('../models/user'); 
-const { handleError } = require('../utils/errorHandler');
-const { ERROR_MESSAGES } = require('../utils/constants');
+const User = require('../../models/user'); 
+const { handleError } = require('../../utils/errorHandler');
+const { ERROR_MESSAGES } = require('../../utils/constants');
 
 const userResolver = {
   Query: {
@@ -8,7 +8,7 @@ const userResolver = {
       try {
         return await User.find();
       } catch (error) {
-        handleError(ERROR_MESSAGES.USER_NOT_FOUND + ' ' + error.message);
+        handleError(ERROR_MESSAGES.USERS_NOT_FOUND + ' ' + error.message);
       }
     }
   },

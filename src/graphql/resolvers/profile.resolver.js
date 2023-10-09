@@ -1,12 +1,19 @@
-const Profile = require('../models/profile'); 
-const { handleError } = require('../utils/errorHandler');
-const { ERROR_MESSAGES } = require('../utils/constants');
+const Profile = require('../../models/profile'); 
+const { handleError } = require('../../utils/errorHandler');
+const { ERROR_MESSAGES } = require('../../utils/constants');
 
 const profileResolver = {
   Query: {
     profiles: async () => { 
       try {
         return await Profile.find();
+      } catch (error) {
+        handleError(ERROR_MESSAGES.PROFILES_NOT_FOUND + ' ' + error.message);
+      }
+    },
+    profile: async (_, { _id }) => {
+      try {
+        return await Profile.findById(_id);
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILE_NOT_FOUND + ' ' + error.message);
       }
