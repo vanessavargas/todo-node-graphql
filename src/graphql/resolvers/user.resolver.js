@@ -34,7 +34,7 @@ const userResolver = {
         console.log(token);
         return token;
       } catch (error) {
-        handleError(ERROR_MESSAGES.LOGIN_ERROR + " " + error.message);
+        handleError(ERROR_MESSAGES.USER_CREATION_ERROR + " " + error.message);
       }
     },
     login: async (_, args) => {
