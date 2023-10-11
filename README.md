@@ -66,3 +66,12 @@ project-root/
   └── README.md            (documentação do projeto)
 
 ```
+
+## Referências
+- [Build a Project with GraphQL, Node, MongoDB and React.js](https://www.youtube.com/playlist?list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_)
+- [GraphQL Nodejs, Mongodb & Json Web Tokenss | Blog API - Ejemplo Simple](https://www.youtube.com/watch?v=B7EzJOqpuw8)
+
+<hr>
+<div align="center">
+Desenvolvido com ❤️ por VanessaVargas
+</div>
