@@ -37,27 +37,32 @@ Requisitos solicitados na API:
 project-root/
   ├── node_modules/       (dependências do projeto)
   ├── src/
+  │   ├── db/             (configurações do banco de dados)
+  │   │   └── index.js
+  │   ├── graphql/        (funções do GraphQL)
+  |   │   ├── resolvers/     
+  |   │   │   ├── profile.resolvers.js
+  |   │   │   ├── todo.resolvers.js
+  |   │   │   └── user.resolvers.js
+  │   │   ├── mutations.js
+  │   │   ├── queries.js
+  │   │   ├── schema.js
+  │   │   └── types.js
+  │   ├── middlewares/    (middlewares da aplicação)
+  │   │   └── auth.js
   │   ├── models/         (modelos de dados)
   │   │   ├── profile.js
   │   │   ├── todo.js
   │   │   └── user.js
-  │   ├── resolvers/      (funções de resolução GraphQL)
-  │   │   ├── profileResolvers.js
-  │   │   ├── todoResolvers.js
-  │   │   └── userResolvers.js
-  │   ├── schemas/        (esquemas GraphQL)
-  │   │   ├── profileSchema.js
-  │   │   ├── todoSchema.js
-  │   │   ├── userSchema.js
-  │   │   └── schema.js
   │   ├── utils/          (utilitários)
+  │   │   ├── auth.js     (configuração token)
+  │   │   ├── bcrypt.js   (configuração encriptação)
+  │   │   ├── config.js   (configurações gerais)
   │   │   ├── constants.js  (constant messages)
-  │   │   ├── config.js   (configurações)
-  │   │   ├── db.js       (conexão com o banco de dados)
   │   │   └── errorHandler.js  (lógica de tratamento de erros)
+  ├── .gitignore           (lista de arquivos a serem ignorados pelo Git)
   ├── app.js               (arquivo principal da aplicação)
   ├── package.json         (configurações e dependências do projeto)
-  ├── README.md            (documentação do projeto)
-  └── .gitignore           (lista de arquivos a serem ignorados pelo Git)
+  └── README.md            (documentação do projeto)
 
 ```
