@@ -14,6 +14,15 @@ const createUser = {
   resolve: userResolver.Mutation.createUser,
 };
 
+const login = {
+  type: GraphQLString,
+  args: {
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+  },
+  resolve: userResolver.Mutation.login,
+}
+
 const updateUser = {
   type: UserType,
   args: {
@@ -91,7 +100,7 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  //login,
+  login,
   createProfile,
   updateProfile,
   deleteProfile,

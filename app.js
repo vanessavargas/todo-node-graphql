@@ -1,9 +1,10 @@
 require("dotenv").config();
 const express = require("express");
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 const cors = require("cors");
-const connectDB = require("./src/utils/db");
+const connectDB = require("./src/db");
 const bcript = require("bcrypt");
+const { authenticate } = require('./src/middlewares/auth');
 
 const schema = require("./src/graphql/schema");
 const { graphqlHTTP } = require("express-graphql");
@@ -13,16 +14,21 @@ const { ERROR_MESSAGES } = require("./src/utils/constants");
 const app = express();
 const port = 8000;
 
+connectDB();
+//app.use(authenticate);
+
 app.use(express.json());
 app.use(cors());
 
-connectDB();
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Testando" });
-  /*  const {userName, email, password, confirmPassword} = req.body
+});
+
+app.post('/auth/register', async(req, res) => {
+  const {userName, email, password, confirmPassword} = req.body
   if(!userName) {
     return res.status(422).json({msg: 'Usuário é obrigatório'});
   }
@@ -34,8 +40,8 @@ app.get("/", (req, res) => {
   }
   if(!confirmPassword) {
     return res.status(422).json({msg: 'Confirmar senha é obrigatório'});
-  } */
-});
+  }
+})
 
 app.use(
   "/graphql",

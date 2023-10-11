@@ -1,4 +1,5 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString } = require("graphql");
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLEnumType } = require("graphql");
+const { User } = require('../models/user');
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -23,7 +24,10 @@ const TodoType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLID },
     description: { type: GraphQLString },
-    //createdOn: { type: GraphQLDate},
+    createdOn: { type: GraphQLString},
+    createdBy: { type: UserType, resolve(parent) {
+      return User.findById(parent.createdBy);
+    } },
     state: { type: GraphQLString },
   }),
 });

@@ -1,4 +1,5 @@
 const ERROR_MESSAGES = {
+  LOGIN_ERROR: "Erro. Login não realizado.",
   PROFILE_NOT_FOUND: "Perfil não encontrado.",
   PROFILES_NOT_FOUND: "Perfis não encontrados.",
   PROFILE_CREATION_ERROR: "Erro ao criar novo perfil.",

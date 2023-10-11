@@ -12,6 +12,13 @@ const userResolver = {
         handleError(ERROR_MESSAGES.USERS_NOT_FOUND + " " + error.message);
       }
     },
+    user: async (_, { _id }) => {
+      try {
+        return await  User.findById(_id);
+      } catch (error) {
+        handleError(ERROR_MESSAGES.USER_NOT_FOUND + " " + error.message);
+      }
+    },
   },
   Mutation: {
     createUser: async (_, { userName, email, password }) => {
@@ -24,10 +31,27 @@ const userResolver = {
           userName: user.userName,
           email: user.email,
         });
-
+        console.log(token);
         return token;
       } catch (error) {
-        handleError(ERROR_MESSAGES.USER_CREATION_ERROR + " " + error.message);
+        handleError(ERROR_MESSAGES.LOGIN_ERROR + " " + error.message);
+      }
+    },
+    login: async (_, args) => {
+        try {
+        const user = await User.findOne({email: args.email}).select("+password");
+
+        if (!user || args.password !== user.password)
+          throw new Error("Credenciais inválidas");
+
+          const token = createToken({
+            _id: user._id,
+            userName: user.userName,
+            email: user.email
+          })
+        return token;
+      } catch (error) {
+        handleError(ERROR_MESSAGES.USER_NOT_FOUND + " " + error.message);
       }
     },
     updateUser: async (_, { _id, userName, email, password }) => {
