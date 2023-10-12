@@ -1,36 +1,47 @@
 # To-Do List
 
-API em Node JS, Graph
+<div align="center">
 
-Requisitos solicitados na API:
-**Tabelas**
-**Todo**: TodoId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), State (Open/Closed), ImageUrl
+  ## 🛠️ Projeto em Andamento
 
-**User**: UserId (Guid), UserName, Password, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), LastLogin, ImageUrl, ProfileId (Guid)
+</div>
 
-**Profile**: ProfileId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid)
+API em Node JS, GraphQL e MongoDB.
 
-- Aplicar o Clean Code (Obrigatório)
-- Usar os princípios de SOLID (Obrigatório)
-- Permitir o cadastro de um TodoItem (CRUD)
-- Permitir o cadastro de um Usuário (CRUD)
-- Permitir o Login para acessar o sistema
-- Emitir um Token JWT após o login com os tipos de Perfil do usuário
+### Requisitos solicitados na API:
+
+- Tabelas
+    - **Todo**: TodoId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), State (Open/Closed), ImageUrl ✔️
+
+    - **User**: UserId (Guid), UserName, Password, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid), LastLogin, ImageUrl, ProfileId (Guid) ✔️
+
+    - **Profile**: ProfileId (Guid), Description, CreatedOn, CreatedBy(Guid), ModifiedOn, ModifiedBy(Guid) ✔️
+
+- Aplicar o Clean Code (Obrigatório) ✔️
+- Usar os princípios de SOLID (Obrigatório) ✔️
+- Permitir o cadastro de um TodoItem (CRUD) ✔️
+- Permitir o cadastro de um Usuário (CRUD) ✔️
+- Permitir o Login para acessar o sistema ✔️
+- Emitir um Token JWT após o login ✔️
+- Implementar tipos de Perfil do usuário
 - Implementar Log de erros para capturar falhas da aplicação
-- Banco de dados - MongoDb
+- Banco de dados ✔️  
 
 ## Tecnologias
 
 - Node JS
 - Express
 - GraphQL
-- Mongoose
+- MongoDb
 - Bcript e JWT para autenticação
 
 ## Inicializar o projeto
 
 - inicializar serviço do MongoDB
 - npm start (inicializando com o nodemon)
+
+## Front End do projeto
+[todo-react](https://github.com/vanessavargas/todo-react)
 
 ```
 
@@ -66,11 +77,6 @@ project-root/
   └── README.md            (documentação do projeto)
 
 ```
-
-## Referências
-- [Build a Project with GraphQL, Node, MongoDB and React.js](https://www.youtube.com/playlist?list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_)
-- [GraphQL Nodejs, Mongodb & Json Web Tokenss | Blog API - Ejemplo Simple](https://www.youtube.com/watch?v=B7EzJOqpuw8)
-
 <hr>
 <div align="center">
 Desenvolvido com ❤️ por VanessaVargas
