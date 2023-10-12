@@ -2,6 +2,7 @@ const User = require("../../models/user");
 const { handleError } = require("../../utils/errorHandler");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 const { createToken } = require("../../utils/auth");
+const bcrypt = require("bcrypt");
 
 const userResolver = {
   Query: {
@@ -23,7 +24,15 @@ const userResolver = {
   Mutation: {
     createUser: async (_, { userName, email, password }) => {
       try {
-        const user = new User({ userName, email, password });
+        const salt = await bcrypt.genSalt(12)
+        const passwordHash = await bcrypt.hash(password, salt)  
+      
+        const user = new User({ 
+          userName, 
+          email, 
+          password
+          : passwordHash
+         });
         await user.save();
 
         const token = createToken({
@@ -31,29 +40,38 @@ const userResolver = {
           userName: user.userName,
           email: user.email,
         });
-        console.log(token);
         return token;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_CREATION_ERROR + " " + error.message);
       }
     },
     login: async (_, args) => {
-        try {
-        const user = await User.findOne({email: args.email}).select("+password");
-
-        if (!user || args.password !== user.password)
+      try {
+        const { email, password } = args;
+    
+        const user = await User.findOne({ email }).select("+password");
+    
+        if (!user) {
+          throw new Error("Usuário não encontrado");
+        }
+    
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+    
+        if (!isPasswordValid) {
           throw new Error("Credenciais inválidas");
-
-          const token = createToken({
-            _id: user._id,
-            userName: user.userName,
-            email: user.email
-          })
+        }
+    
+        const token = createToken({
+          _id: user._id,
+          userName: user.userName,
+          email: user.email
+        });
+    
         return token;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_NOT_FOUND + " " + error.message);
       }
-    },
+    },    
     updateUser: async (_, { _id, userName, email, password }) => {
       try {
         return await User.findByIdAndUpdate(

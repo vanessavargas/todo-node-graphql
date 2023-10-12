@@ -73,6 +73,7 @@ const createTodo = {
     description: { type: GraphQLString },
     //createdOn: { type: GraphQLDate},
     state: { type: GraphQLString },
+    //createdBy: user,
   },
   resolve: todoResolver.Mutation.createTodo,
 };

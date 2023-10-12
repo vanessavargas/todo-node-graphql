@@ -5,7 +5,7 @@ const todoSchemaDb = new mongoose.Schema({
   _id: { type: String, default: uuidv4 },
   description: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
-  createdBy: { type: String },
+  createdBy: { type: String, required: true },
   modifiedOn: { type: Date },
   modifiedBy: { type: String },
   state: { type: String, enum: ["Open", "Closed"], default: "Open" },

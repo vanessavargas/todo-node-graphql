@@ -25,7 +25,10 @@ const todoResolver = {
     }) => {
       try {
         //console.log(verifiedUser);
-        const todo = new Todo({ description, state
+        const todo = new Todo({ 
+          description, 
+          state,
+          createdBy: "1e854ee5-4ebd-4db1-80d9-9272f3df22fb"
           //, createdBy: verifiedUser._id 
         });
         return await todo.save();
