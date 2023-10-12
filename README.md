@@ -1,4 +1,4 @@
-# To-Do List
+# API To-Do List Node e GraphQL 
 
 <div align="center">
 
@@ -41,7 +41,7 @@ API em Node JS, GraphQL e MongoDB.
 - npm start (inicializando com o nodemon)
 
 ## Front End do projeto
-[todo-react](https://github.com/vanessavargas/todo-react)
+➪ [To Do List - React JS](https://github.com/vanessavargas/todo-react)
 
 ```
 
