@@ -20,16 +20,12 @@ const todoResolver = {
     },
   },
   Mutation: {
-    createTodo: async (_, { description, state
-      //, verifiedUser 
-    }) => {
+    createTodo: async (_, { description, state}, { verifiedUser }) => {
       try {
-        //console.log(verifiedUser);
         const todo = new Todo({ 
           description, 
           state,
-          createdBy: "1e854ee5-4ebd-4db1-80d9-9272f3df22fb"
-          //, createdBy: verifiedUser._id 
+          createdBy: verifiedUser._id 
         });
         return await todo.save();
       } catch (error) {
