@@ -1,18 +1,18 @@
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../utils/config");
 
 const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1] || "";
   try {
-    const verified = jwt.verify(token, JWT_SECRET);
+    const token = req.headers.authorization?.split(" ")[1]; // || "";
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
     req.verifiedUser = verified.user;
+    console.log(req.verifiedUser);
     next();
   } catch (error) {
-    // console.error("error:", error);
+    console.log(error);
     next();
   }
-};
+}
 
 module.exports = {
-  authenticate,
+  authenticate
 };

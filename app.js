@@ -13,13 +13,13 @@ const app = express();
 const port = process.env.PORT;
 
 connectDB();
-//app.use(authenticate);
-
 app.use(express.json());
 app.use(cors());
 
+app.use(authenticate);
+
 app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Testando" });
+  res.send("Rota pública");
 });
 
 app.use(
