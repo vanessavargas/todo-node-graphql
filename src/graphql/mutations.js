@@ -10,6 +10,7 @@ const createUser = {
     userName: { type: GraphQLString },
     email: { type: GraphQLString },
     password: { type: GraphQLString },
+    createdOn: { type: GraphQLString },
   },
   resolve: userResolver.Mutation.createUser,
 };
@@ -71,9 +72,7 @@ const createTodo = {
   type: TodoType,
   args: {
     description: { type: GraphQLString },
-    //createdOn: { type: GraphQLDate},
     state: { type: GraphQLString },
-    //createdBy: user,
   },
   resolve: todoResolver.Mutation.createTodo,
 };

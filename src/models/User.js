@@ -18,11 +18,11 @@ const userSchemaDb = new mongoose.Schema({
     required: true,
     select: false,
   },
-  createdOn: { type: Date, default: Date.now },
+  createdOn: { type: String, default: Date.now },
   createdBy: { type: String },
-  modifiedOn: { type: Date },
+  modifiedOn: { type: String },
   modifiedBy: { type: String },
-  lastLogin: { type: Date },
+  lastLogin: { type: String },
   imageUrl: { type: String },
 });
 
