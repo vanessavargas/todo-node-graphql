@@ -10,7 +10,7 @@ const { handleError } = require("./src/utils/errorHandler");
 const { ERROR_MESSAGES } = require("./src/utils/constants");
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT;
 
 connectDB();
 //app.use(authenticate);

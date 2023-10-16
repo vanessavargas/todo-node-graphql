@@ -1,5 +1,7 @@
+require('dotenv').config(); 
+
 const config = {
-  uri: "mongodb://localhost:27017/mongodbgraphql",
+  uri: process.env.MONGODB_URI,
 };
 
 module.exports = config;
