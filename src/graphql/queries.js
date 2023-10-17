@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLNonNull, GraphQLID } = require("graphql");
+const { GraphQLList, GraphQLNonNull, GraphQLID, GraphQLInt } = require("graphql");
 const { UserType, ProfileType, TodoType } = require("./types");
 const userResolver = require("./resolvers/user.resolver");
 const profileResolver = require("./resolvers/profile.resolver");
@@ -24,6 +24,10 @@ const profiles = {
 
 const todos = {
   type: new GraphQLList(TodoType),
+  args: {
+    limit: { type: GraphQLInt },
+    offset: { type: GraphQLInt }
+  },
   resolve: todoResolver.Query.todos,
 };
 
