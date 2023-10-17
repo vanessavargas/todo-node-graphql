@@ -4,7 +4,7 @@ const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const todoResolver = {
   Query: {
-    todos: async (_, { limit = 2, offset = 0 }, { verifiedUser }) => {
+    todos: async (_, { limit = 6, offset = 0 }, { verifiedUser }) => {
       try {
         return await Todo.find({ createdBy: verifiedUser._id })
           .skip(offset)
