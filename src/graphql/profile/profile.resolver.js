@@ -1,6 +1,6 @@
-const Profile = require("../../models/profile");
-const { handleError } = require("../../utils/errorHandler");
-const { logError } = require("../../utils/logger");
+const Profile = require("../../db/models/profile");
+const { handleError } = require("../../utils/error/handleError");
+const { logError } = require("../../utils/error/loggerError");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const profileResolver = {

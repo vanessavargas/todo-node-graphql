@@ -1,18 +1,20 @@
 const { GraphQLSchema, GraphQLObjectType } = require("graphql");
 
-const { users, user, profiles, todos } = require("./queries");
+const { users, user } = require("./user/user.queries");
+const { profiles } = require("./profile/profile.queries");
+const { todos } = require("./todo/todo.queries");
 const {
   createUser,
   updateUser,
   deleteUser,
   login,
+} = require("./user/user.mutations");
+const {
   createProfile,
   updateProfile,
   deleteProfile,
-  createTodo,
-  updateTodo,
-  deleteTodo,
-} = require("./mutations");
+} = require("./profile/profile.mutations");
+const { createTodo, updateTodo, deleteTodo } = require("./todo/todo.mutations");
 
 // Define QueryType
 const QueryType = new GraphQLObjectType({

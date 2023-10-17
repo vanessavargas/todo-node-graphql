@@ -1,13 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./src/db");
+const connectDB = require("./src/db/dbConfig");
 const { authenticate } = require('./src/middlewares/auth');
 
 const schema = require("./src/graphql/schema");
 const { graphqlHTTP } = require("express-graphql");
-const { handleError } = require("./src/utils/errorHandler");
-const { logError } = require("./src/utils/logger");
+const { handleError } = require("./src/utils/error/handleError");
+const { logError } = require("./src/utils/error/loggerError");
 const { ERROR_MESSAGES } = require("./src/utils/constants");
 
 const app = express();

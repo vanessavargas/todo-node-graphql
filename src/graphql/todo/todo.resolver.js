@@ -1,6 +1,6 @@
-const Todo = require("../../models/todo");
-const { handleError } = require("../../utils/errorHandler");
-const { logError } = require("../../utils/logger");
+const Todo = require("../../db/models/todo");
+const { handleError } = require("../../utils/error/handleError");
+const { logError } = require("../../utils/error/loggerError");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const todoResolver = {

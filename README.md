@@ -47,30 +47,40 @@ API em Node JS, GraphQL e MongoDB.
 
 project-root/      
   ├── src/
-  │   ├── db/             (configurações do banco de dados)
-  │   │   └── index.js
+  │   ├── db/             
+  │   │   ├── models/         (modelos de dados)
+  │   │   │   ├── profile.js
+  │   │   │   ├── todo.js
+  │   │   │   └── user.js
+  │   │   └── dbConfig.js     (configurações do banco de dados)
   │   ├── graphql/        (funções do GraphQL)
-  |   │   ├── resolvers/     
-  |   │   │   ├── profile.resolvers.js
-  |   │   │   ├── todo.resolvers.js
-  |   │   │   └── user.resolvers.js
-  │   │   ├── mutations.js
-  │   │   ├── queries.js
-  │   │   ├── schema.js
-  │   │   └── types.js
+  |   │   ├── profile/     
+  |   │   │   ├── profile.mutations.js
+  |   │   │   ├── profile.queries.js
+  |   │   │   ├── profile.resolver.js
+  |   │   │   └── profile.type.js
+  |   │   ├── todo/     
+  |   │   │   ├── todo.mutations.js
+  |   │   │   ├── todo.queries.js
+  |   │   │   ├── todo.resolver.js
+  |   │   │   └── todo.type.js
+  |   │   ├── user/     
+  |   │   │   ├── user.mutations.js
+  |   │   │   ├── user.queries.js
+  |   │   │   ├── user.resolver.js
+  |   │   │   └── user.type.js
+  │   │   └── schema.js
   │   ├── middlewares/    (middlewares da aplicação)
   │   │   └── auth.js
-  │   ├── models/         (modelos de dados)
-  │   │   ├── profile.js
-  │   │   ├── todo.js
-  │   │   └── user.js
-  │   ├── utils/          (utilitários)
-  │   │   ├── auth.js     (configuração token)
-  │   │   ├── bcrypt.js   (configuração encriptação)
-  │   │   ├── config.js   (configurações gerais)
-  │   │   ├── constants.js  (constant messages)
-  │   │   ├── errorHandler.js  (lógica de tratamento de erros)
-  │   │   └── logger.js    (lógica de captura logs de erros)
+  │   └── utils/          (utilitários)
+  │       ├── authentication     
+  │       │     └── auth.js     (configuração token)
+  │       ├── error     
+  |       │     ├── errorHandler.js  (tratamento de erros)
+  │       │     └── logger.js    (captura logs de erros)
+  │       ├── bcrypt.js   (configuração encriptação)
+  │       └── constants.js  (constant messages)
+  ├── config.js   (configurações gerais)
   ├── .gitignore           (lista de arquivos a serem ignorados pelo Git)
   ├── app.js               (arquivo principal da aplicação)
   ├── package.json         (configurações e dependências do projeto)

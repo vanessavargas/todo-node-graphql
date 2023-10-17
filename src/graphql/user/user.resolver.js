@@ -1,8 +1,8 @@
-const User = require("../../models/user");
-const { handleError } = require("../../utils/errorHandler");
-const { logError } = require("../../utils/logger");
+const User = require("../../db/models/user");
+const { handleError } = require("../../utils/error/handleError");
+const { logError } = require("../../utils/error/loggerError");
 const { ERROR_MESSAGES } = require("../../utils/constants");
-const { createToken } = require("../../utils/auth");
+const { createToken } = require("../../utils/authentication/auth");
 const bcrypt = require("bcrypt");
 
 const userResolver = {
