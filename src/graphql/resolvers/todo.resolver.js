@@ -4,9 +4,9 @@ const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const todoResolver = {
   Query: {
-    todos: async () => {
+    todos: async (_, __, { verifiedUser }) => {
       try {
-        return await Todo.find();
+        return await Todo.find({ createdBy: verifiedUser._id });
       } catch (error) {
         handleError(ERROR_MESSAGES.TODOS_NOT_FOUND + " " + error.message);
       }
@@ -20,12 +20,13 @@ const todoResolver = {
     },
   },
   Mutation: {
-    createTodo: async (_, { description, state}, { verifiedUser }) => {
+    createTodo: async (_, { description, state }, { verifiedUser }) => {
       try {
-        const todo = new Todo({ 
-          description, 
+        console.log(verifiedUser);
+        const todo = new Todo({
+          description,
           state,
-          createdBy: verifiedUser._id 
+          createdBy: verifiedUser._id,
         });
         return await todo.save();
       } catch (error) {
