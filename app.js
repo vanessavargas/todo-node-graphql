@@ -7,6 +7,7 @@ const { authenticate } = require('./src/middlewares/auth');
 const schema = require("./src/graphql/schema");
 const { graphqlHTTP } = require("express-graphql");
 const { handleError } = require("./src/utils/errorHandler");
+const { logError } = require("./src/utils/logger");
 const { ERROR_MESSAGES } = require("./src/utils/constants");
 
 const app = express();
@@ -32,6 +33,7 @@ app.use(
 
 app.use((err, req, res, next) => {
   handleError(ERROR_MESSAGES.GENERIC_ERROR);
+  logError(error);
 });
 
 app.listen(port, () => {

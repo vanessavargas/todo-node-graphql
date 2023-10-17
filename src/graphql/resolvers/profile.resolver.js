@@ -1,5 +1,6 @@
 const Profile = require("../../models/profile");
 const { handleError } = require("../../utils/errorHandler");
+const { logError } = require("../../utils/logger");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const profileResolver = {
@@ -9,6 +10,7 @@ const profileResolver = {
         return await Profile.find();
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILES_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
     profile: async (_, { _id }) => {
@@ -16,6 +18,7 @@ const profileResolver = {
         return await Profile.findById(_id);
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILE_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
   },
@@ -28,6 +31,7 @@ const profileResolver = {
         handleError(
           ERROR_MESSAGES.PROFILE_CREATION_ERROR + " " + error.message
         );
+        logError(error);
       }
     },
     updateProfile: async (_, { _id, description }) => {
@@ -39,6 +43,7 @@ const profileResolver = {
         );
       } catch (error) {
         handleError(ERROR_MESSAGES.PROFILE_UPDATE_ERROR + " " + error.message);
+        logError(error);
       }
     },
     deleteProfile: async (_, { _id }) => {
@@ -49,6 +54,7 @@ const profileResolver = {
         handleError(
           ERROR_MESSAGES.PROFILE_DELETION_ERROR + " " + error.message
         );
+        logError(error);
       }
     },
   },

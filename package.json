@@ -14,7 +14,8 @@
     "graphql": "^15.8.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.3",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
   },
   "scripts": {
     "start": "nodemon app.js"

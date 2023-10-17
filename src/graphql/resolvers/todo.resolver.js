@@ -1,5 +1,6 @@
 const Todo = require("../../models/todo");
 const { handleError } = require("../../utils/errorHandler");
+const { logError } = require("../../utils/logger");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 
 const todoResolver = {
@@ -11,6 +12,7 @@ const todoResolver = {
           .limit(limit);
       } catch (error) {
         handleError(ERROR_MESSAGES.TODOS_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
     todo: async (_, { _id }) => {
@@ -18,6 +20,7 @@ const todoResolver = {
         return await Todo.findById(_id);
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
   },
@@ -33,6 +36,7 @@ const todoResolver = {
         return await todo.save();
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_CREATION_ERROR + " " + error.message);
+        logError(error);
       }
     },
     updateTodo: async (_, { _id, description, state }) => {
@@ -44,6 +48,7 @@ const todoResolver = {
         );
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_UPDATE_ERROR + " " + error.message);
+        logError(error);
       }
     },
     deleteTodo: async (_, { _id }) => {
@@ -52,6 +57,7 @@ const todoResolver = {
         return true;
       } catch (error) {
         handleError(ERROR_MESSAGES.TODO_DELETION_ERROR + " " + error.message);
+        logError(error);
       }
     },
   },

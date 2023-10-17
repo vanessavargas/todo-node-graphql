@@ -1,5 +1,6 @@
 const User = require("../../models/user");
 const { handleError } = require("../../utils/errorHandler");
+const { logError } = require("../../utils/logger");
 const { ERROR_MESSAGES } = require("../../utils/constants");
 const { createToken } = require("../../utils/auth");
 const bcrypt = require("bcrypt");
@@ -11,6 +12,7 @@ const userResolver = {
         return await User.find();
       } catch (error) {
         handleError(ERROR_MESSAGES.USERS_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
     user: async (_, { _id }) => {
@@ -18,6 +20,7 @@ const userResolver = {
         return await  User.findById(_id);
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },
   },
@@ -43,6 +46,7 @@ const userResolver = {
         return token;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_CREATION_ERROR + " " + error.message);
+        logError(error);
       }
     },
     login: async (_, args) => {
@@ -70,6 +74,7 @@ const userResolver = {
         return token;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_NOT_FOUND + " " + error.message);
+        logError(error);
       }
     },    
     updateUser: async (_, { _id, userName, email, password }) => {
@@ -81,6 +86,7 @@ const userResolver = {
         );
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_UPDATE_ERROR + " " + error.message);
+        logError(error);
       }
     },
     deleteUser: async (_, { _id }) => {
@@ -89,6 +95,7 @@ const userResolver = {
         return true;
       } catch (error) {
         handleError(ERROR_MESSAGES.USER_DELETION_ERROR + " " + error.message);
+        logError(error);
       }
     },
   },

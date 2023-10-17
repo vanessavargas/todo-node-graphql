@@ -24,7 +24,7 @@ API em Node JS, GraphQL e MongoDB.
 - Permitir o Login para acessar o sistema ✔️
 - Emitir um Token JWT após o login ✔️
 - Implementar tipos de Perfil do usuário
-- Implementar Log de erros para capturar falhas da aplicação
+- Implementar Log de erros para capturar falhas da aplicação ✔️
 - Banco de dados ✔️  
 
 ## Tecnologias
@@ -45,8 +45,7 @@ API em Node JS, GraphQL e MongoDB.
 
 ```
 
-project-root/
-  ├── node_modules/       (dependências do projeto)
+project-root/      
   ├── src/
   │   ├── db/             (configurações do banco de dados)
   │   │   └── index.js
@@ -70,7 +69,8 @@ project-root/
   │   │   ├── bcrypt.js   (configuração encriptação)
   │   │   ├── config.js   (configurações gerais)
   │   │   ├── constants.js  (constant messages)
-  │   │   └── errorHandler.js  (lógica de tratamento de erros)
+  │   │   ├── errorHandler.js  (lógica de tratamento de erros)
+  │   │   └── logger.js    (lógica de captura logs de erros)
   ├── .gitignore           (lista de arquivos a serem ignorados pelo Git)
   ├── app.js               (arquivo principal da aplicação)
   ├── package.json         (configurações e dependências do projeto)
