@@ -15,9 +15,9 @@ const port = process.env.PORT;
 
 connectDB();
 app.use(express.json());
-app.use(cors());
 
 app.use(authenticate);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Rota pública");
