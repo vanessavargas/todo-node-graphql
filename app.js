@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-app.use((err, req, res, next) => {
+app.use((error, req, res, next) => {
   handleError(ERROR_MESSAGES.GENERIC_ERROR);
   logError(error);
 });

@@ -52,7 +52,6 @@ const userResolver = {
     login: async (_, args) => {
       try {
         const { email, password } = args;
-    
         const user = await User.findOne({ email }).select("+password");
     
         if (!user) {

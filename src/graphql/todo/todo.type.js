@@ -7,9 +7,6 @@ const TodoType = new GraphQLObjectType({
     description: { type: GraphQLString },
     createdOn: { type: GraphQLString },
     createdBy: { type: GraphQLString },
-    /* createdBy: { type: UserType, resolve(parent) {
-      return User.findById(parent.createdBy);
-    } }, */
     state: { type: GraphQLString },
   }),
 });

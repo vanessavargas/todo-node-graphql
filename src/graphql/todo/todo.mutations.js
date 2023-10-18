@@ -16,7 +16,6 @@ const updateTodo = {
   args: {
     _id: { type: GraphQLID },
     description: { type: GraphQLString },
-    //createdOn: { type: GraphQLDate},
     state: { type: GraphQLString },
   },
   resolve: todoResolver.Mutation.updateTodo,
